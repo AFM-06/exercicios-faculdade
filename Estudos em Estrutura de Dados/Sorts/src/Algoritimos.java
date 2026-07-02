@@ -1,7 +1,13 @@
+import java.util.Random;
 
 public class Algoritimos {
     private int[] array = new int[20];
-
+    public Algoritimos(){
+        Random random = new Random();
+        for(int i = 0; i < this.array.length; i++){
+            this.array[i] = random.nextInt(100);
+        }
+    }
     public void buubleSort(){
         int size = array.length;
         for(int i = 0; i < size-1; i++){
