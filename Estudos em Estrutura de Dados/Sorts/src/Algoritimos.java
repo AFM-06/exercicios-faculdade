@@ -21,5 +21,6 @@ public class Algoritimos {
                 }
             }
         }
+        System.out.println(Arrays.toString(array));
     }
 }
