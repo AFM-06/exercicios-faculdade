@@ -10,6 +10,7 @@ public class Algoritimos {
         }
     }
     public void buubleSort(){
+        System.out.println(Arrays.toString(array));
         int size = array.length;
         for(int i = 0; i < size-1; i++){
             for(int j = 0; j < size - 1 - i;j++){
