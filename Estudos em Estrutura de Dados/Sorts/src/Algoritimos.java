@@ -41,4 +41,18 @@ public class Algoritimos {
         }
         System.out.println(Arrays.toString(array));
     }
+    public void insertionSort(){
+        System.out.println(Arrays.toString(array));
+        int size = array.length;
+        for(int i = 1; i < size; i++){
+            int j = i;
+            while (j > 0 && array[j - 1] > array[j]){
+                int aux = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = aux;
+                j = j - 1;
+            }
+        }
+        System.out.println(Arrays.toString(array));
+    }
 }
