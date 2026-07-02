@@ -23,4 +23,22 @@ public class Algoritimos {
         }
         System.out.println(Arrays.toString(array));
     }
+    public void selectionSort(){
+        System.out.println(Arrays.toString(array));
+        int size = array.length;
+        for(int i = 0; i < size - 1; i++){
+            int indiceMenor = i;
+            for(int j = i + 1; j < size; j++){
+                if(array[j]<array[indiceMenor]){
+                    indiceMenor = j;
+                }
+            }
+            if(indiceMenor != i){
+                int aux = array[i];
+                array[i] = array[indiceMenor];
+                array[indiceMenor] = aux;
+            }
+        }
+        System.out.println(Arrays.toString(array));
+    }
 }
