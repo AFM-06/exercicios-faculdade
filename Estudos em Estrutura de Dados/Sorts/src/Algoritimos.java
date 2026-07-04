@@ -108,4 +108,53 @@ public class Algoritimos {
             array[position] = temp[position - head];
         }
     }
+
+    public void bucketSort() {
+        System.out.println(Arrays.toString(array));
+        int size = array.length;
+        int k = 5;
+
+        ArrayList<Integer>[] buckets = new ArrayList[k];
+        for (int position = 0; position < k; position++) {
+            buckets[position] = new ArrayList<>();
+        }
+
+        int maxValue = array[0];
+        for (int position = 1; position < size; position++) {
+            if (array[position] > maxValue) {
+                maxValue = array[position];
+            }
+        }
+        int M = maxValue + 1;
+
+        for (int position = 0; position < size; position++) {
+            int bucketIndex = (int) ((double) k * array[position] / M);
+            buckets[bucketIndex].add(array[position]);
+        }
+
+        for (int position = 0; position < k; position++) {
+            insertionSortBucket(buckets[position]);
+        }
+
+        int currentIndex = 0;
+        for (int position = 0; position < k; position++) {
+            for (int element : buckets[position]) {
+                array[currentIndex] = element;
+                currentIndex = currentIndex + 1;
+            }
+        }
+        System.out.println(Arrays.toString(array));
+    }
+    private void insertionSortBucket(ArrayList<Integer> bucket) {
+        int bucketSize = bucket.size();
+        for (int current = 1; current < bucketSize; current++) {
+            int key = bucket.get(current);
+            int scan = current - 1;
+            while (scan >= 0 && bucket.get(scan) > key) {
+                bucket.set(scan + 1, bucket.get(scan));
+                scan = scan - 1;
+            }
+            bucket.set(scan + 1, key);
+        }
+    }
 }
