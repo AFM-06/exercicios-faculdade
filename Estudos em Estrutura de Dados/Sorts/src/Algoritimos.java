@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Algoritimos {
-    private int[] array = new int[20];
+    private int[] array = new int[5];
     public Algoritimos(){
         Random random = new Random();
         for(int i = 0; i < this.array.length; i++){
@@ -64,7 +64,6 @@ public class Algoritimos {
         }
         System.out.println(Arrays.toString(array));
     }
-
     private void mergeSortHelper(int head, int tail){
         if(head < tail){
             int middle = (head + tail)/2;
