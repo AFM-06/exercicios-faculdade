@@ -10,4 +10,11 @@ public class SingleLinkedList {
         newHead.next = this.head;
         this.head = newHead;
     }
+    public Node busca(int data){
+        Node search = this.head;
+        while(search != null && search.data != data){
+            search = search.next;
+        }
+        return search;
+    }
 }
