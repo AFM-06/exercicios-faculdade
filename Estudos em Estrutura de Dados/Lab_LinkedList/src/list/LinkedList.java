@@ -4,6 +4,11 @@ public class LinkedList implements LinkedList_IF{
 	private No head;
 	private No tail;
 	private int size;
+	public LinkedList(){
+		this.head = null;
+		this.tail = null;
+		this.size = 0;
+	}
 	@Override
 	public boolean isEmpty() {
 		// TODO Verifica se a lista está vazia. Retorna true se estiver vazia e false caso contrário
