@@ -17,4 +17,19 @@ public class SingleLinkedList {
         }
         return search;
     }
+    public void remocao(int data){
+        if(this.head.data == data){
+            this.head = this.head.next;
+        }else{
+            Node search = this.head;
+            Node previous = null;
+            while(search != null && search.data != data){
+                previous = search;
+                search = search.next;
+            }
+            if(search == null){
+                previous.next = search.next;
+            }
+        }
+    }
 }
