@@ -10,7 +10,7 @@ public class No {
 		this.previous = previous;
 	}
 	public Integer getDado() { //Manter o nome desta função. Ela será utilizada nos testes
-		return dado;
+		return data;
 	}
 
 }
