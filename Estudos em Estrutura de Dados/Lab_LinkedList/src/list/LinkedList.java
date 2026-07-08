@@ -12,6 +12,9 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public boolean isEmpty() {
 		// TODO Verifica se a lista está vazia. Retorna true se estiver vazia e false caso contrário
+		if(tail.equals(null)){
+			return true;
+		}
 		return false;
 	}
 
