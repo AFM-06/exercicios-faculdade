@@ -24,6 +24,13 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No search(Integer elemento) {
 		// TODO Busca um nó com um determinado valor na lista
+		if(!head.data.equals(null)){
+			No toSearch = this.head;
+			while (!toSearch.equals(null) && !toSearch.data.equals(elemento)){
+				toSearch = toSearch.next;
+			}
+			return toSearch;
+		}
 		return null;
 	}
 
