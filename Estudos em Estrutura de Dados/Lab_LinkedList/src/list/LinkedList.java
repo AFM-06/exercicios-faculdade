@@ -18,7 +18,7 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public int size() {
 		// TODO Retorna o tamanho da lista
-		return 0;
+		return size;
 	}
 
 	@Override
