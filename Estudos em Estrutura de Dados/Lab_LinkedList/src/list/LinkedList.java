@@ -54,7 +54,14 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public void insertLast(Integer novoElemento) {
 		// TODO Implementar a inserção no FINAL (tail) da lista
-		
+		No x = new No(novoElemento,null,null);
+		x.previous = this.tail;
+		if(!this.tail.equals(null)){
+			this.tail.next = x;
+		}else{
+			this.head = x;
+		}
+		this.tail = x;
 	}
 
 	@Override
