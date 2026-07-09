@@ -40,6 +40,14 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public void insertFirst(Integer novoElemento) {
 		// TODO Implementar a inserção no COMEÇO (head) da lista
+		No x = new No(novoElemento,null,null);
+		x.next = this.head;
+		if(!this.head.equals(null)){
+			this.head.previous = x;
+		}else{
+			this.tail = x;
+		}
+		this.head = x;
 		
 	}
 
