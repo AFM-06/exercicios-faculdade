@@ -107,6 +107,17 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No removeFinal() {
 		// TODO Remoção no final da lista.A remoção deve retornar o nó REMOVIDO
+		if(!this.tail.equals(null)){
+			No aux = this.tail;
+			this.tail = this.tail.previous;
+			if(this.head.equals(null)){
+				this.head = this.tail;
+			}else{
+				this.tail.next = null;
+			}
+			size--;
+			return aux;
+		}
 		return null;
 	}
 
