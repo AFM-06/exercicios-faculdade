@@ -47,6 +47,7 @@ public class LinkedList implements LinkedList_IF{
 		}else{
 			this.tail = x;
 		}
+		size++;
 		this.head = x;
 		
 	}
