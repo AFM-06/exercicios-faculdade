@@ -69,6 +69,21 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No remove(Integer elemento) {
 		// TODO Remove um nó com um determinado valor. A remoção deve retornar o nó REMOVIDO
+		if(this.head.data.equals(elemento)){
+			removeInicio();
+		}else if(this.tail.data.equals(elemento)){
+			removeFinal();
+		}else{
+			No aux = this.head;
+			while (!aux.equals(null) && !aux.data.equals(elemento)){
+				aux = aux.next;
+			}
+			if(!aux.equals(null)){
+				aux.previous.next = aux.next;
+				aux.next.previous = aux.previous;
+				size--;
+			}
+		}
 		return null;
 	}
 
