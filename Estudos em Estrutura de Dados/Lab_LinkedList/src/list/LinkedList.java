@@ -79,9 +79,11 @@ public class LinkedList implements LinkedList_IF{
 				aux = aux.next;
 			}
 			if(!aux.equals(null)){
+				No remove = aux;
 				aux.previous.next = aux.next;
 				aux.next.previous = aux.previous;
 				size--;
+				return remove;
 			}
 		}
 		return null;
