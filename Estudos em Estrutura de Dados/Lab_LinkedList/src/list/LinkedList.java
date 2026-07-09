@@ -129,6 +129,15 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No[] toArray() {
 		// TODO Retorna um array de nós a partir da lista encadeada.
+		if(!this.head.equals(null)){
+            List<No>  array = new ArrayList<>();
+			No x = this.head;
+			while(!x.equals(null)){
+				array.add(x);
+				x = x.next;
+			}
+			return array.toArray(new No[0]);
+		}
 		return null;
 	}
 }
