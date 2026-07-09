@@ -90,6 +90,17 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No removeInicio() {
 		// TODO Remoção no início da lista. A remoção deve retornar o nó REMOVIDO
+		if(!this.head.equals(null)){
+			No aux = this.head;
+			this.head = this.head.next;
+			if(this.head.equals(null)){
+				this.tail = this.head;
+			}else{
+				this.head.previous = null;
+			}
+			size--;
+			return aux;
+		}
 		return null;
 	}
 
