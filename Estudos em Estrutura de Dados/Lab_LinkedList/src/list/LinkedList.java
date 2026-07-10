@@ -1,6 +1,7 @@
 package list;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LinkedList implements LinkedList_IF{
@@ -15,11 +16,8 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public boolean isEmpty() {
 		// TODO Verifica se a lista está vazia. Retorna true se estiver vazia e false caso contrário
-		if(tail.equals(null)){
-			return true;
-		}
-		return false;
-	}
+        return this.tail == null;
+    }
 
 	@Override
 	public int size() {
@@ -30,9 +28,9 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No search(Integer elemento) {
 		// TODO Busca um nó com um determinado valor na lista
-		if(!head.data.equals(null)){
+		if(this.head.data != null){
 			No toSearch = this.head;
-			while (!toSearch.equals(null) && !toSearch.data.equals(elemento)){
+			while(toSearch != null && !toSearch.data.equals(elemento)){
 				toSearch = toSearch.next;
 			}
 			return toSearch;
@@ -45,14 +43,13 @@ public class LinkedList implements LinkedList_IF{
 		// TODO Implementar a inserção no COMEÇO (head) da lista
 		No x = new No(novoElemento,null,null);
 		x.next = this.head;
-		if(!this.head.equals(null)){
+		if(this.head != null){
 			this.head.previous = x;
 		}else{
 			this.tail = x;
 		}
 		size++;
 		this.head = x;
-		
 	}
 
 	@Override
@@ -60,7 +57,7 @@ public class LinkedList implements LinkedList_IF{
 		// TODO Implementar a inserção no FINAL (tail) da lista
 		No x = new No(novoElemento,null,null);
 		x.previous = this.tail;
-		if(!this.tail.equals(null)){
+		if(this.tail != null){
 			this.tail.next = x;
 		}else{
 			this.head = x;
@@ -78,15 +75,14 @@ public class LinkedList implements LinkedList_IF{
 			removeFinal();
 		}else{
 			No aux = this.head;
-			while (!aux.equals(null) && !aux.data.equals(elemento)){
+			while (aux != null && !aux.data.equals(elemento)){
 				aux = aux.next;
 			}
-			if(!aux.equals(null)){
-				No remove = aux;
+			if(aux != null){
 				aux.previous.next = aux.next;
 				aux.next.previous = aux.previous;
 				size--;
-				return remove;
+				return aux;
 			}
 		}
 		return null;
@@ -95,10 +91,10 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No removeInicio() {
 		// TODO Remoção no início da lista. A remoção deve retornar o nó REMOVIDO
-		if(!this.head.equals(null)){
+		if(this.head != null){
 			No aux = this.head;
 			this.head = this.head.next;
-			if(this.head.equals(null)){
+			if(this.head == null){
 				this.tail = this.head;
 			}else{
 				this.head.previous = null;
@@ -112,10 +108,10 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No removeFinal() {
 		// TODO Remoção no final da lista.A remoção deve retornar o nó REMOVIDO
-		if(!this.tail.equals(null)){
+		if(this.tail != null){
 			No aux = this.tail;
 			this.tail = this.tail.previous;
-			if(this.head.equals(null)){
+			if(this.head == null){
 				this.head = this.tail;
 			}else{
 				this.tail.next = null;
@@ -129,15 +125,19 @@ public class LinkedList implements LinkedList_IF{
 	@Override
 	public No[] toArray() {
 		// TODO Retorna um array de nós a partir da lista encadeada.
-		if(!this.head.equals(null)){
+		if(this.head != null){
             List<No>  array = new ArrayList<>();
 			No x = this.head;
-			while(!x.equals(null)){
+			while(x != null){
 				array.add(x);
 				x = x.next;
 			}
 			return array.toArray(new No[0]);
 		}
 		return null;
+	}
+	public void print(){
+		No[] aux = toArray();
+		System.out.println(Arrays.toString(aux));
 	}
 }
