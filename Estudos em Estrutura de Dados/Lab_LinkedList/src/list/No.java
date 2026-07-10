@@ -12,4 +12,8 @@ public class No {
 	public Integer getDado() { //Manter o nome desta função. Ela será utilizada nos testes
 		return data;
 	}
+	@Override
+	public String toString(){
+		return ""+this.getDado();
+	}
 }
