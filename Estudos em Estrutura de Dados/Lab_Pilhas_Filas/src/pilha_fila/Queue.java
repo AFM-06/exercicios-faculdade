@@ -33,8 +33,16 @@ public class Queue implements Queue_IF{
 
 	@Override
 	public Integer dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty()){
+			System.out.println("Queue is empty.");
+			return null;
+		}else{
+			var aux = head;
+			head.next.previous = null;
+			head = head.next;
+			size--;
+			return aux.data;
+		}
 	}
 
 	@Override
