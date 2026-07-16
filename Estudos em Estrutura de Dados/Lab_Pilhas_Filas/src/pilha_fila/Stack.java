@@ -17,8 +17,21 @@ public class Stack implements Stack_IF{
 	
 	@Override
 	public Integer pop() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty()){
+			System.out.println("Stack is empty.");
+			return null;
+		}else{
+			var aux = top;
+			if(top == bottom){
+				top = null;
+				bottom = null;
+			}else{
+				top.previous.next = null;
+				top = top.next;
+			}
+			size--;
+			return aux.data;
+		}
 	}
 
 	@Override
