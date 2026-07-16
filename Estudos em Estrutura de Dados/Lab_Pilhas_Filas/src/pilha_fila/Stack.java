@@ -20,8 +20,7 @@ public class Stack implements Stack_IF{
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
