@@ -27,7 +27,7 @@ public class Queue implements Queue_IF{
 			}
 			size++;
 		}else{
-			System.out.println("Fila cheia!");
+			System.out.println("Queue is full.");
 		}
 	}
 
