@@ -20,7 +20,7 @@ public class QueueNode {
         return data;
     }
     //On process of make a print method im think e consider using to string, but, I preferred to do without this.
-    //thinking in version terms, i decided to not delete him.
+    //thinking in version terms, I decided to not delete him.
     @Override
     public String toString(){
         return ""+this.getDado();
