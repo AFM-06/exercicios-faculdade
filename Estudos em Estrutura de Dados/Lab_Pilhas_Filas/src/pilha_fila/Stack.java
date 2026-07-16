@@ -25,8 +25,7 @@ public class Stack implements Stack_IF{
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == max_size;
 	}
 
 	@Override
