@@ -43,9 +43,8 @@ public class Queue implements Queue_IF{
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        return size.equals(max_size);
+    }
 
 	@Override
 	public Integer peek() {
