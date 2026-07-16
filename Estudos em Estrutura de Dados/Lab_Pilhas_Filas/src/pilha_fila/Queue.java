@@ -38,9 +38,14 @@ public class Queue implements Queue_IF{
 			return null;
 		}else{
 			var aux = head;
-			head.next.previous = null;
-			head = head.next;
-			size--;
+			if(head == tail){
+				head = null;
+				tail = null;
+				size--;
+			}else{
+				head.next.previous = null;
+				head = head.next;
+			}
 			return aux.data;
 		}
 	}
