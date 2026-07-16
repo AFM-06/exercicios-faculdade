@@ -15,4 +15,11 @@ public class QueueNode {
         next = null;
         previous = null;
     }
+    public Integer getDado() {
+        return data;
+    }
+    @Override
+    public String toString(){
+        return ""+this.getDado();
+    }
 }
