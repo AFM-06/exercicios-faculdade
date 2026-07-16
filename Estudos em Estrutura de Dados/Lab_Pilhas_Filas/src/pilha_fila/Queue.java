@@ -6,8 +6,11 @@ public class Queue implements Queue_IF{
 	private Integer max_size;
 	private Integer size;
 
-	public Queue (int max_size) {
-		//TODO Implemente a partir deste construtor
+	public Queue(Integer max_size) {
+		head = new QueueNode();
+		tail = new QueueNode();
+		this.max_size = 10;
+		this.size = 0;
 	}
 	
 	@Override
