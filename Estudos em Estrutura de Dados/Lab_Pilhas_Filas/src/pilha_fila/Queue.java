@@ -1,6 +1,6 @@
 package pilha_fila;
 
-public class Queue implements Queue_IF{
+public class Queue implements Queue_IF {
 	private QueueNode head;
 	private QueueNode tail;
 	private Integer max_size;
@@ -12,36 +12,36 @@ public class Queue implements Queue_IF{
 		this.max_size = 10;
 		this.size = 0;
 	}
-	
+
 	@Override
 	public void enqueue(Integer novoElemento) {
-		if(!isFull()){
+		if (!isFull()) {
 			var node = new QueueNode(novoElemento);
-			if(tail == null){
+			if (tail == null) {
 				tail = node;
 				head = node;
-			}else{
+			} else {
 				node.previous = tail;
 				tail.next = node;
 				tail = node;
 			}
 			size++;
-		}else{
+		} else {
 			System.out.println("Queue is full.");
 		}
 	}
 
 	@Override
 	public Integer dequeue() {
-		if(isEmpty()){
+		if (isEmpty()) {
 			System.out.println("Queue is empty.");
 			return null;
-		}else{
+		} else {
 			var aux = head;
-			if(head == tail){
+			if (head == tail) {
 				head = null;
 				tail = null;
-			}else{
+			} else {
 				head.next.previous = null;
 				head = head.next;
 			}
@@ -52,13 +52,13 @@ public class Queue implements Queue_IF{
 
 	@Override
 	public boolean isEmpty() {
-        return size == 0;
-    }
+		return size == 0;
+	}
 
 	@Override
 	public boolean isFull() {
-        return size.equals(max_size);
-    }
+		return size.equals(max_size);
+	}
 
 	@Override
 	public Integer peek() {
@@ -83,5 +83,4 @@ public class Queue implements Queue_IF{
 		}
 		return null;
 	}
-
 }
