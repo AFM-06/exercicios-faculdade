@@ -5,7 +5,7 @@ public class Stack implements Stack_IF{
 	private StackNode top;
 	private StackNode bottom;
 	private Integer size;
-	private int max_size;
+	private final int max_size;
 
 	//Class constructor
 	public Stack(int max_size) {
