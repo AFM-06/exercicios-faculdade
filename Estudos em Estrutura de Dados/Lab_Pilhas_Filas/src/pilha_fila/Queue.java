@@ -25,6 +25,7 @@ public class Queue implements Queue_IF{
 				tail.next = node;
 				tail = node;
 			}
+			size++;
 		}else{
 			System.out.println("Fila cheia!");
 		}
