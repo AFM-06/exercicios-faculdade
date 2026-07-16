@@ -1,7 +1,13 @@
 package pilha_fila;
 
 public class Stack implements Stack_IF{
-	
+	//Attributes
+	private StackNode top;
+	private StackNode bottom;
+	private Integer size;
+	private int max_size;
+
+	//Class constructor
 	public Stack(int max_size) {
 		//TODO Implemente a partir deste construtor
 	}
