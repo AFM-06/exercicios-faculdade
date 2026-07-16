@@ -30,8 +30,7 @@ public class Stack implements Stack_IF{
 
 	@Override
 	public Integer top() {
-		// TODO Auto-generated method stub
-		return null;
+		return top.data;
 	}
 
 	@Override
