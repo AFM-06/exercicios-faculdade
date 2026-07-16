@@ -91,6 +91,7 @@ public class Queue implements Queue_IF {
 				System.out.print(print.data+" ");
 				print = print.next;
 			}
+			System.out.println();
 		}
 	}
 }
