@@ -50,5 +50,15 @@ public class Stack implements Stack_IF{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	public void print(){
+		if(!isEmpty()){
+			var print = top;
+			while(print!=null){
+				System.out.print(print.data+" ");
+				print = print.next;
+			}
+			System.out.println();
+		}
+	}
 }
