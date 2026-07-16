@@ -14,8 +14,20 @@ public class Stack implements Stack_IF{
 
 	@Override
 	public void push(Integer novoElemento) {
-		// TODO Auto-generated method stub
-		
+		if(!isFull()){
+			var new_item = new StackNode(novoElemento);
+			if(isEmpty()){
+				top = new_item;
+				bottom = new_item;
+			}else{
+				new_item.previous = top;
+				top.next = new_item;
+				top = new_item;
+			}
+			size++;
+		}else{
+			System.out.println("Stack is full.");
+		}
 	}
 
 	@Override
