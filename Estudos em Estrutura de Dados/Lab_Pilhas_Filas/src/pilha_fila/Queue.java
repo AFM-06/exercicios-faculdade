@@ -62,7 +62,9 @@ public class Queue implements Queue_IF{
 
 	@Override
 	public Integer peek() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			return head.data;
+		}
 		return null;
 	}
 
