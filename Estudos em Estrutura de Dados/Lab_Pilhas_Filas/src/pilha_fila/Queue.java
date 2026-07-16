@@ -83,6 +83,7 @@ public class Queue implements Queue_IF {
 		}
 		return null;
 	}
+
 	public void print(){
 		if(!isEmpty()){
 			var print = head;
