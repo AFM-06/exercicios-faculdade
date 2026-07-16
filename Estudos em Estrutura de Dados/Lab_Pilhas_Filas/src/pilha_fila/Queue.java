@@ -9,7 +9,7 @@ public class Queue implements Queue_IF {
 	public Queue(Integer max_size) {
 		head = new QueueNode();
 		tail = new QueueNode();
-		this.max_size = 10;
+		this.max_size = max_size;
 		this.size = 0;
 	}
 
