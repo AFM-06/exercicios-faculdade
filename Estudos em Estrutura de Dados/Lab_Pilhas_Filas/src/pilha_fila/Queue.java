@@ -15,8 +15,19 @@ public class Queue implements Queue_IF{
 	
 	@Override
 	public void enqueue(Integer novoElemento) {
-		// TODO Auto-generated method stub
-		
+		if(!isFull()){
+			var node = new QueueNode(novoElemento);
+			if(tail == null){
+				tail = node;
+				head = node;
+			}else{
+				node.previous = tail;
+				tail.next = node;
+				tail = node;
+			}
+		}else{
+			System.out.println("Fila cheia!");
+		}
 	}
 
 	@Override
