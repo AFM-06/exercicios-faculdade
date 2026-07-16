@@ -41,7 +41,6 @@ public class Queue implements Queue_IF{
 			if(head == tail){
 				head = null;
 				tail = null;
-				size--;
 			}else{
 				head.next.previous = null;
 				head = head.next;
