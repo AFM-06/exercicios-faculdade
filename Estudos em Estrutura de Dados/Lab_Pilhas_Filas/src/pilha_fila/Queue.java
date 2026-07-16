@@ -46,6 +46,7 @@ public class Queue implements Queue_IF{
 				head.next.previous = null;
 				head = head.next;
 			}
+			size--;
 			return aux.data;
 		}
 	}
