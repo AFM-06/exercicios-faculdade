@@ -8,8 +8,8 @@ public class Queue implements Queue_IF {
 	private Integer size;
 	//Constructor, initialize size in 0 and max_size it's a personal choice of user
 	public Queue(Integer max_size) {
-		head = new QueueNode();
-		tail = new QueueNode();
+		head = null;
+		tail = null;
 		this.max_size = max_size;
 		this.size = 0;
 	}
