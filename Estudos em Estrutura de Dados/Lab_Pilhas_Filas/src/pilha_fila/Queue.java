@@ -1,6 +1,10 @@
 package pilha_fila;
 
 public class Queue implements Queue_IF{
+	private QueueNode head;
+	private QueueNode tail;
+	private Integer max_size;
+	private Integer size;
 
 	public Queue (int max_size) {
 		//TODO Implemente a partir deste construtor
