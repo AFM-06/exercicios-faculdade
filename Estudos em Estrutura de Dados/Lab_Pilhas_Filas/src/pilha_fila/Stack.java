@@ -9,7 +9,10 @@ public class Stack implements Stack_IF{
 
 	//Class constructor
 	public Stack(int max_size) {
-		//TODO Implemente a partir deste construtor
+		top = null;
+		bottom = null;
+		size = 0;
+		this.max_size = max_size;
 	}
 	
 	@Override
