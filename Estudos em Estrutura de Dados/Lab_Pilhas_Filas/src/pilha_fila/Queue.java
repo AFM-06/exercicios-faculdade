@@ -17,7 +17,7 @@ public class Queue implements Queue_IF {
 	public void enqueue(Integer novoElemento) {
 		if (!isFull()) {
 			var node = new QueueNode(novoElemento);
-			if (tail == null) {
+			if (isEmpty()) {
 				tail = node;
 				head = node;
 			} else {
