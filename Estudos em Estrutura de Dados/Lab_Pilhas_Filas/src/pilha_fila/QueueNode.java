@@ -1,5 +1,6 @@
 package pilha_fila;
 
 public class QueueNode {
-	//TODO
-}
+    Integer data;
+    QueueNode next;
+    QueueNode previous;
