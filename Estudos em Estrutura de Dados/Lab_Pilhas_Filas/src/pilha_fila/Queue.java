@@ -4,7 +4,7 @@ public class Queue implements Queue_IF {
 	//Attributes
 	private QueueNode head;
 	private QueueNode tail;
-	private Integer max_size;
+	private final Integer max_size;
 	private Integer size;
 	//Constructor, initialize size in 0 and max_size it's a personal choice of user
 	public Queue(Integer max_size) {
