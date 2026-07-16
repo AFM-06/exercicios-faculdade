@@ -47,7 +47,17 @@ public class Stack implements Stack_IF{
 
 	@Override
 	public Integer[] toArray() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			Integer[] array = new Integer[size];
+			var x = top;
+			int i = 0;
+			while (x != null) {
+				array[i] = x.data;
+				i++;
+				x = x.next;
+			}
+			return array;
+		}
 		return null;
 	}
 	
