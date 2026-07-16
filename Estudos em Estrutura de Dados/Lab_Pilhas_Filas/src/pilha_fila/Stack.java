@@ -29,7 +29,7 @@ public class Stack implements Stack_IF{
 				bottom = null;
 			}else{
 				top.previous.next = null;
-				top = top.next;
+				top = top.previous;
 			}
 			size--;
 			return aux.data;
@@ -68,7 +68,10 @@ public class Stack implements Stack_IF{
 	//Return top.data, no less no more.
 	@Override
 	public Integer top() {
-		return top.data;
+		if(!isEmpty()){
+			return top.data;
+		}
+		return null;
 	}
 	//first, check if the queue is empty; otherwise, create an array of Integers of size [size],
 	//initialize node x at the top, and traverse to the bottom, adding items using index [i].
@@ -81,7 +84,7 @@ public class Stack implements Stack_IF{
 			while (x != null) {
 				array[i] = x.data;
 				i++;
-				x = x.next;
+				x = x.previous;
 			}
 			return array;
 		}
@@ -94,7 +97,7 @@ public class Stack implements Stack_IF{
 			var print = top;
 			while(print!=null){
 				System.out.print(print.data+" ");
-				print = print.next;
+				print = print.previous;
 			}
 			System.out.println();
 		}
