@@ -38,9 +38,8 @@ public class Queue implements Queue_IF{
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        return size == 0;
+    }
 
 	@Override
 	public boolean isFull() {
