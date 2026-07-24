@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Estudos em Estrutura de Dados/Linked List/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Estudos em Estrutura de Dados/Lab_LinkedList/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Estudos em Estrutura de Dados/Lab_Pilhas_Filas/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Estudos em Estrutura de Dados/Lab_BST/src/bst" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
