@@ -14,8 +14,7 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Verifica se a árvore está vazia, retornando True se estiver e False caso contrário.
-		return false;
+		return this.root == null;
 	}
 
 	@Override
