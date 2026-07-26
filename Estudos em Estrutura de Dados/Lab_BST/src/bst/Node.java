@@ -5,7 +5,19 @@ public class Node {
     private Node left;
     private Node right;
     private Node parent;
-    
+
+    public Node(){
+		value = null;
+		left = null;
+		right = null;
+		parent = null;
+	}
+	public Node(Integer value){
+		this.value = value;
+		left = null;
+		right = null;
+		parent = null;
+	}
     //É sempre recomendável utilizar os métodos gets e sets para acessar
     //os atributos de uma classe.
     //Não modificar os gets e sets desta classe!
