@@ -25,8 +25,22 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node search(Integer value) {
-		// TODO Auto-generated method stub
-		return null;
+		if(root == null){
+			System.out.println("Árvore vazia.");
+			return null;
+		}else if(root.value == value){
+			return root;
+		}else{
+			var search = root;
+			while(search != null && search.value != value){
+				if(value>search.value){
+					search = search.right;
+				}else{
+					search = search.left;
+				}
+			}
+			return search;
+		}
 	}
 
 	@Override
