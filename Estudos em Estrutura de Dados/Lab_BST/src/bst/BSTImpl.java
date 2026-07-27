@@ -63,8 +63,12 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node predecessor(Node node) {
-		// TODO Auto-generated method stub
-		return null;
+		if(node.left != null) return maximum(node.left);
+		var y = node.parent;
+		while(y != null && y.value>node.value){
+			y = y.parent;
+		}
+		return y;
 	}
 
 	@Override
