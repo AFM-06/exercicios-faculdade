@@ -32,7 +32,7 @@ public class BSTImpl implements BST_IF {
 			return root;
 		}else{
 			var search = root;
-			while(search != null && search.value != value){
+			while(search != null && !search.value.equals(value)){
 				if(value>search.value){
 					search = search.right;
 				}else{
