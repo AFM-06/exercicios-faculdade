@@ -56,9 +56,9 @@ public class BSTImpl implements BST_IF {
 	}
 
 	@Override
-	public Node minimum(Node node) {
-		// TODO Auto-generated method stub
-		return null;
+	public Node minimum(Node raiz) {
+		while(raiz.left != null) raiz = raiz.left;
+		return raiz;
 	}
 
 	@Override
