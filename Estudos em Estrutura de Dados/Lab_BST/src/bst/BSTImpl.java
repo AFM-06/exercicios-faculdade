@@ -50,9 +50,9 @@ public class BSTImpl implements BST_IF {
 	}
 
 	@Override
-	public Node maximum(Node node) {
-		// TODO Auto-generated method stub
-		return null;
+	public Node maximum(Node raiz) {
+		while(raiz.right != null) raiz = raiz.right;
+		return raiz;
 	}
 
 	@Override
