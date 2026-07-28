@@ -45,8 +45,25 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public void insert(Integer value) {
-		// TODO Auto-generated method stub
-		
+		var z = new Node(value);
+		var x = root;
+		var y = new Node();
+		while(x!= null){
+			y = x;
+			if(z.value > x.value){
+				x = x.left;
+			}else{
+				x = x.right;
+			}
+		}
+		z.parent = y;
+		if(y == null){
+			root = z;
+		}else if(z.value < y.value){
+			y.left = z;
+		}else{
+			y.right = z;
+		}
 	}
 
 	@Override
