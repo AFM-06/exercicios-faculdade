@@ -73,9 +73,9 @@ public class BSTImpl implements BST_IF {
 	}
 
 	@Override
-	public Node minimum(Node raiz) {
-		while(raiz.left != null) raiz = raiz.left;
-		return raiz;
+	public Node minimum(Node node) {
+		while(node.left != null) node = node.left;
+		return node;
 	}
 
 	@Override
