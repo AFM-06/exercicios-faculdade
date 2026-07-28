@@ -67,9 +67,9 @@ public class BSTImpl implements BST_IF {
 	}
 
 	@Override
-	public Node maximum(Node raiz) {
-		while(raiz.right != null) raiz = raiz.right;
-		return raiz;
+	public Node maximum(Node node) {
+		while(node.right != null) node = node.right;
+		return node;
 	}
 
 	@Override
