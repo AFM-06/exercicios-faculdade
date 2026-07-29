@@ -169,7 +169,11 @@ public class BSTImpl implements BST_IF {
 	}
 	@Override
 	public Integer[] preOrder() {
-		// TODO Auto-generated method stub
+		if(!isEmpty()){
+			var array = preOrderRecursive(root);
+			System.out.println(Arrays.toString(array));
+			return array;
+		}
 		return null;
 	}
 
