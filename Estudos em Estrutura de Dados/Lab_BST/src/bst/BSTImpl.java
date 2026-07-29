@@ -122,8 +122,39 @@ public class BSTImpl implements BST_IF {
 	
 	@Override
 	public void remove(Integer value) {
-		// TODO Auto-generated method stub
-		
+		// 1. Encontra o nó 'z' que será removido usando o método de busca da classe
+		Node z = search(value);
+
+		// Se não achou, encerra o método
+		if (z == null) {
+			return;
+		}
+
+		// Caso 1: Não tem filho à esquerda
+		if (z.left == null) {
+			transplant(z, z.right);
+		}
+		// Caso 2: Não tem filho à direita
+		else if (z.right == null) {
+			transplant(z, z.left);
+		}
+		// Caso 3: Tem os dois filhos
+		else {
+			// Encontra o sucessor 'y' usando a função minimum que você já tem
+			Node y = minimum(z.right);
+
+			// Se 'y' não for o filho imediato de 'z'
+			if (y.parent != z) {
+				transplant(y, y.right);
+				y.right = z.right;
+				y.right.parent = y;
+			}
+
+			// Finalmente, substitui 'z' por 'y'
+			transplant(z, y);
+			y.left = z.left;
+			y.left.parent = y;
+		}
 	}
 
 	@Override
