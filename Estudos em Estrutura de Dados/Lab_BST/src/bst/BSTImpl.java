@@ -98,6 +98,28 @@ public class BSTImpl implements BST_IF {
 		return y;
 	}
 
+	private void transplant(Node u, Node v) {
+		// Se 'u' não tem pai, significa que ele é a raiz.
+		// Então 'v' se torna a nova raiz.
+		if (u.parent == null) {
+			this.root = v;
+		}
+		// Se 'u' for o filho da esquerda do pai dele,
+		// 'v' assume essa posição à esquerda.
+		else if (u == u.parent.left) {
+			u.parent.left = v;
+		}
+		// Caso contrário, 'u' era o filho da direita.
+		else {
+			u.parent.right = v;
+		}
+
+		// Se 'v' não for vazio, conecta o pai de 'v' ao antigo pai de 'u'.
+		if (v != null) {
+			v.parent = u.parent;
+		}
+	}
+	
 	@Override
 	public void remove(Integer value) {
 		// TODO Auto-generated method stub
