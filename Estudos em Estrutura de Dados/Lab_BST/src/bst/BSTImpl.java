@@ -192,7 +192,16 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Integer[] order() {
-		// TODO Auto-generated method stub
+		if(!isEmpty()){
+			List<Integer> nodes = new ArrayList<>();
+
+			preOrderRecursive(root,nodes);
+
+			Integer[] array = nodes.toArray(new Integer[0]);
+
+			System.out.println(Arrays.toString(array));
+			return array;
+		}
 		return null;
 	}
 
