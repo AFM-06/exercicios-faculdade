@@ -182,6 +182,14 @@ public class BSTImpl implements BST_IF {
 		return null;
 	}
 
+	private void orderRecursive(Node root, List<Integer> nodes){
+		if(root != null){
+			preOrderRecursive(root.left, nodes);
+			nodes.add(root.value);
+			preOrderRecursive(root.right, nodes);
+		}
+	}
+
 	@Override
 	public Integer[] order() {
 		// TODO Auto-generated method stub
