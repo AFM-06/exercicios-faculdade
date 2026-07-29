@@ -170,7 +170,12 @@ public class BSTImpl implements BST_IF {
 	@Override
 	public Integer[] preOrder() {
 		if(!isEmpty()){
-			var array = preOrderRecursive(root);
+			List<Integer> nodes = new ArrayList<>();
+
+			preOrderRecursive(root,nodes);
+
+			Integer[] array = nodes.toArray(new Integer[0]);
+
 			System.out.println(Arrays.toString(array));
 			return array;
 		}
