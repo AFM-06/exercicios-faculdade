@@ -14,7 +14,7 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public boolean isEmpty() {
-		return this.root == null;
+		return root == null;
 	}
 
 	@Override
