@@ -45,7 +45,7 @@ public class BSTImpl implements BST_IF {
 				if(value>search.getValue()){
 					search = search.getRight();
 				}else{
-					search = search.left;
+					search = search.getLeft();
 				}
 			}
 			return search;
