@@ -55,9 +55,9 @@ public class BSTImpl implements BST_IF {
 	@Override
 	public void insert(Integer value) {
 		var z = new Node(value);
-		var x = root;
-		var y = new Node();
-		while(x!= null){
+		Node x = root;
+		Node y = null;
+		while(x != null){
 			y = x;
 			if(z.value > x.value){
 				x = x.left;
