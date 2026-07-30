@@ -71,7 +71,7 @@ public class BSTImpl implements BST_IF {
 		}else if(z.getValue() < y.getValue()){
 			y.setLeft(z);
 		}else{
-			y.right = z;
+			y.setRight(z);
 		}
 	}
 
