@@ -85,7 +85,8 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node minimum(Node node) {
-		while(node.left != null) node = node.left;
+		while(node.getLeft() != null) node = node.getLeft();
+		System.out.println(node.getValue());
 		return node;
 	}
 
