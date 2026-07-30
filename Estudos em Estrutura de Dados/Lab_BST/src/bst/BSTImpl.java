@@ -5,9 +5,9 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class BSTImpl implements BST_IF {
-	
-	private Node root; //nó raiz
-	
+	private Node root;
+	private Integer size = 0;
+
 	public BSTImpl() { //Utilizar este construtor padrão
 
 	}
