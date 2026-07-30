@@ -78,7 +78,8 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node maximum(Node node) {
-		while(node.right != null) node = node.right;
+		while(node.getRight() != null) node = node.getRight();
+		System.out.println(node.getValue());
 		return node;
 	}
 
