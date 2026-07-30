@@ -26,7 +26,9 @@ public class BSTImpl implements BST_IF {
 	}
 	@Override
 	public int height() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()){
+			return recursiveheight(root);
+		}
 		return 0;
 	}
 
