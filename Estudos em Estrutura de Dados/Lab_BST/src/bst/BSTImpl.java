@@ -37,7 +37,7 @@ public class BSTImpl implements BST_IF {
 		if(root == null){
 			System.out.println("Árvore vazia.");
 			return null;
-		}else if(root.value.equals(value)){
+		}else if(root.getValue().equals(value)){
 			return root;
 		}else{
 			var search = root;
