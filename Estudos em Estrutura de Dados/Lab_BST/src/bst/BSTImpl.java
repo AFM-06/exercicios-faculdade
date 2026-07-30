@@ -17,6 +17,13 @@ public class BSTImpl implements BST_IF {
 		return root == null;
 	}
 
+	private int recursiveheight(Node node){
+		if(node == null){
+			return -1;
+		}else{
+			return 1 + Math.max(recursiveheight(node.getLeft()),recursiveheight(node.getRight()));
+		}
+	}
 	@Override
 	public int height() {
 		// TODO Auto-generated method stub
