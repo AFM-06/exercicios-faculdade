@@ -59,8 +59,8 @@ public class BSTImpl implements BST_IF {
 		Node y = null;
 		while(x != null){
 			y = x;
-			if(z.value > x.value){
-				x = x.left;
+			if(z.getValue() < x.getValue()){
+				x = x.getLeft();
 			}else{
 				x = x.right;
 			}
