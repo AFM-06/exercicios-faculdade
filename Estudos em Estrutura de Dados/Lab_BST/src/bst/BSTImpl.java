@@ -73,6 +73,7 @@ public class BSTImpl implements BST_IF {
 		}else{
 			y.setRight(z);
 		}
+		this.size++;
 	}
 
 	@Override
