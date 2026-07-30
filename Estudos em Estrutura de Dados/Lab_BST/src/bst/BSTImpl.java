@@ -102,10 +102,10 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node sucessor(Node node) {
-		if(node.right != null) return minimum(node.right);
-		var y = node.parent;
-		while(y != null && y.value < node.value){
-			y = y.parent;
+		if(node.getRight() != null) return minimum(node.getRight());
+		var y = node.getParent();
+		while(y != null && y.getValue() < node.getValue()){
+			y = y.getParent();
 		}
 		return y;
 	}
