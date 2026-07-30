@@ -92,10 +92,10 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node predecessor(Node node) {
-		if(node.left != null) return maximum(node.left);
-		var y = node.parent;
-		while(y != null && y.value>node.value){
-			y = y.parent;
+		if(node.getLeft() != null) return maximum(node.getLeft());
+		var y = node.getParent();
+		while(y != null && y.getValue()>node.getValue()){
+			y = y.getParent();
 		}
 		return y;
 	}
