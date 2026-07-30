@@ -65,7 +65,7 @@ public class BSTImpl implements BST_IF {
 				x = x.getRight();
 			}
 		}
-		z.parent = y;
+		z.setParent(y);
 		if(y == null){
 			root = z;
 		}else if(z.value < y.value){
