@@ -7,7 +7,8 @@ public class BSTImpl implements BST_IF {
 	private Integer size = 0;
 
 	public BSTImpl() { //Utilizar este construtor padrão
-
+		this.root = null;
+		this.size = 0;
 	}
 
 	@Override
