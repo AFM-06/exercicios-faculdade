@@ -13,10 +13,12 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public boolean isEmpty() {
+		// return boolean result, if true bst is actually empty.
 		return root == null;
 	}
 
 	private int recursiveHeight(Node node){
+		//Create a private recursive method cause original method for interface contract doesn't have parameters
 		if(node == null){
 			return -1;
 		}else{
@@ -25,6 +27,7 @@ public class BSTImpl implements BST_IF {
 	}
 	@Override
 	public int height() {
+		// Simple work, just do something if BST is not empty
 		if (!isEmpty()){
 			return recursiveHeight(root);
 		}
@@ -33,50 +36,56 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node search(Integer value) {
-		if(root == null){
+		//Here we have 3 situations, if bst is empty, if root is the search value, if root is not the value,
+		//will verify if search value is bigger than auxNode, if yes, go searching on right side, if not, on left side
+		if(isEmpty()){
 			System.out.println("Árvore vazia.");
 			return null;
 		}else if(root.getValue().equals(value)){
 			return root;
 		}else{
-			var search = root;
-			while(search != null && !search.getValue().equals(value)){
-				if(value>search.getValue()){
-					search = search.getRight();
+			var auxNode = root;
+			while(auxNode != null && !auxNode.getValue().equals(value)){
+				if(value> auxNode.getValue()){
+					auxNode = auxNode.getRight();
 				}else{
-					search = search.getLeft();
+					auxNode = auxNode.getLeft();
 				}
 			}
-			return search;
+			return auxNode;
 		}
 	}
 
 	@Override
 	public void insert(Integer value) {
-		var z = new Node(value);
-		Node x = root;
-		Node y = null;
-		while(x != null){
-			y = x;
-			if(z.getValue() < x.getValue()){
-				x = x.getLeft();
+		//This method use 3 attributes, currentNode will tell were have free space, newNode will be son of Parent node,
+		//and parent node verify if newNode will be in right side or left side
+		Node newNode = new Node(value);
+		Node currentNode = root;
+		Node parentNode = null;
+
+		while(currentNode != null){
+			parentNode = currentNode;
+			if(newNode.getValue() < currentNode.getValue()){
+				currentNode = currentNode.getLeft();
 			}else{
-				x = x.getRight();
+				currentNode = currentNode.getRight();
 			}
 		}
-		z.setParent(y);
-		if(y == null){
-			root = z;
-		}else if(z.getValue() < y.getValue()){
-			y.setLeft(z);
+		newNode.setParent(parentNode);
+		if(parentNode == null){
+			root = newNode;
+		}else if(newNode.getValue() < parentNode.getValue()){
+			parentNode.setLeft(newNode);
 		}else{
-			y.setRight(z);
+			parentNode.setRight(newNode);
 		}
 		this.size++;
 	}
 
 	@Override
 	public Node maximum(Node node) {
+		//Go full right to discover bigger value in bst
 		while(node.getRight() != null) node = node.getRight();
 		System.out.println(node.getValue());
 		return node;
@@ -84,6 +93,7 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node minimum(Node node) {
+		//Go full left to discover smaller value in bst
 		while(node.getLeft() != null) node = node.getLeft();
 		System.out.println(node.getValue());
 		return node;
@@ -91,85 +101,80 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Node predecessor(Node node) {
+		//if node have a subtree in left, the predecessor will be the max value
+		//else, will scale the tree until find predecessor
 		if(node.getLeft() != null) return maximum(node.getLeft());
-		var y = node.getParent();
-		while(y != null && y.getValue()>node.getValue()){
-			y = y.getParent();
+
+		Node currentParent = node.getParent();
+		while(currentParent != null && currentParent.getValue() > node.getValue()){
+			currentParent = currentParent.getParent();
 		}
-		return y;
+		return currentParent;
 	}
 
 	@Override
 	public Node sucessor(Node node) {
+		//if tree have subtree in right side, will be return minimum value on right side
+		//else, will scale the tree until find sucessor
 		if(node.getRight() != null) return minimum(node.getRight());
-		var y = node.getParent();
-		while(y != null && y.getValue() < node.getValue()){
-			y = y.getParent();
+
+		Node currentParent = node.getParent();
+		while(currentParent != null && currentParent.getValue() < node.getValue()){
+			currentParent = currentParent.getParent();
 		}
-		return y;
+		return currentParent;
 	}
 
-	private void transplant(Node u, Node v) {
-		// Se 'u' não tem pai, significa que ele é a raiz.
-		// Então 'v' se torna a nova raiz.
-		if (u.getParent() == null) {
-			this.root = v;
-		}
-		// Se 'u' for o filho da esquerda do pai dele,
-		// 'v' assume essa posição à esquerda.
-		else if (u == u.getParent().getLeft()) {
-			u.getParent().setLeft(v);
-		}
-		// Caso contrário, 'u' era o filho da direita.
-		else {
-			u.getParent().setRight(v);
+	private void transplant(Node nodeToReplace, Node replacementNode) {
+		//This method replaces one node with another within the BST, updating the parent's
+		//pointer to link to the new replacement node. It handles the specific cases
+		//where the node to replace is the root, a left child, or a right child.
+		if (nodeToReplace.getParent() == null) {
+			this.root = replacementNode;
+		} else if (nodeToReplace == nodeToReplace.getParent().getLeft()) {
+			nodeToReplace.getParent().setLeft(replacementNode);
+		} else {
+			nodeToReplace.getParent().setRight(replacementNode);
 		}
 
-		// Se 'v' não for vazio, conecta o pai de 'v' ao antigo pai de 'u'.
-		if (v != null) {
-			v.setParent(u.getParent());
+		if (replacementNode != null) {
+			replacementNode.setParent(nodeToReplace.getParent());
 		}
 	}
-	
+
 	@Override
 	public void remove(Integer value) {
-		// 1. Encontra o nó 'z' que será removido usando o método de busca da classe
-		Node z = search(value);
+		//This method removes a node by finding it and handling 3 cases: if it has no left child,
+		//no right child, or both children. If it has both, it finds the successor to take its
+		//place and safely reconnects the subtrees using the transplant method.
+		Node nodeToRemove = search(value);
 
-		// Se não achou, encerra o método
-		if (z == null) {
-			return;
-		}
+		if (nodeToRemove == null) return;
 
-		// Caso 1: Não tem filho à esquerda
-		if (z.getLeft() == null) {
-			transplant(z, z.getRight());
-		}
-		// Caso 2: Não tem filho à direita
-		else if (z.getRight() == null) {
-			transplant(z, z.getLeft());
-		}
-		// Caso 3: Tem os dois filhos
-		else {
-			// Encontra o sucessor 'y' usando a função minimum que você já tem
-			Node y = minimum(z.getRight());
+		if (nodeToRemove.getLeft() == null) {
+			transplant(nodeToRemove, nodeToRemove.getRight());
+		} else if (nodeToRemove.getRight() == null) {
+			transplant(nodeToRemove, nodeToRemove.getLeft());
+		} else {
+			Node successorNode = minimum(nodeToRemove.getRight());
 
-			// Se 'y' não for o filho imediato de 'z'
-			if (y.getParent() != z) {
-				transplant(y, y.getRight());
-				y.setRight(z.getRight());
-				y.getRight().setParent(y);
+			if (successorNode.getParent() != nodeToRemove) {
+				transplant(successorNode, successorNode.getRight());
+				successorNode.setRight(nodeToRemove.getRight());
+				successorNode.getRight().setParent(successorNode);
 			}
 
-			// Finalmente, substitui 'z' por 'y'
-			transplant(z, y);
-			y.setLeft(z.getLeft());
-			y.getLeft().setParent(y);
+			transplant(nodeToRemove, successorNode);
+			successorNode.setLeft(nodeToRemove.getLeft());
+			successorNode.getLeft().setParent(successorNode);
 		}
 		size--;
 	}
 
 	private void preOrderRecursive(Node root, List<Integer> nodes){
+		//This private recursive method traverses the BST in Pre-Order format
+		//It first visits the current root value, then recursively visits the left
+		//subtree, and finally recursively visits the right subtree
 		if(root != null){
 			nodes.add(root.getValue());
 			preOrderRecursive(root.getLeft(), nodes);
@@ -178,13 +183,13 @@ public class BSTImpl implements BST_IF {
 	}
 	@Override
 	public Integer[] preOrder() {
+		//This method initializes an empty list and calls the recursive pre-order function
+		//if the tree is not empty. After traversal, it converts the list of collected
+		//values into an array and returns it.
 		if(!isEmpty()){
 			List<Integer> nodes = new ArrayList<>();
-
 			preOrderRecursive(root,nodes);
-
 			Integer[] array = nodes.toArray(new Integer[0]);
-
 			System.out.println(Arrays.toString(array));
 			return array;
 		}
@@ -192,6 +197,9 @@ public class BSTImpl implements BST_IF {
 	}
 
 	private void orderRecursive(Node root, List<Integer> nodes){
+		//This private recursive method traverses the BST in In-Order format.
+		//It recursively visits the left subtree, adds the current node value (ascending order),
+		//and then recursively visits the right subtree.
 		if(root != null){
 			orderRecursive(root.getLeft(), nodes);
 			nodes.add(root.getValue());
@@ -201,6 +209,8 @@ public class BSTImpl implements BST_IF {
 
 	@Override
 	public Integer[] order() {
+		//This method initializes an empty list and calls the recursive in-order function
+		//if the tree is not empty. It returns an array of the elements sorted in ascending order.
 		if(!isEmpty()){
 			List<Integer> nodes = new ArrayList<>();
 
@@ -215,6 +225,9 @@ public class BSTImpl implements BST_IF {
 	}
 
 	private void postOrderRecursive(Node root, List<Integer> nodes){
+		//This private recursive method traverses the BST in Post-Order format.
+		//It recursively visits the left subtree, then the right subtree, and only
+		//adds the current node value after both subtrees are fully visited.
 		if(root != null){
 			postOrderRecursive(root.getLeft(), nodes);
 			postOrderRecursive(root.getRight(), nodes);
@@ -223,6 +236,8 @@ public class BSTImpl implements BST_IF {
 	}
 	@Override
 	public Integer[] postOrder() {
+		//This method initializes an empty list and calls the recursive post-order function
+		//if the tree is not empty. After traversal, it converts the list into an array.
 		if(!isEmpty()){
 			List<Integer> nodes = new ArrayList<>();
 
@@ -237,7 +252,7 @@ public class BSTImpl implements BST_IF {
 	}
 
 	@Override
-	public int size() {return size;}
+	public int size() {return size;} // just return size.
 
 	/**
 	 * Método de brinde! Não modificar!
