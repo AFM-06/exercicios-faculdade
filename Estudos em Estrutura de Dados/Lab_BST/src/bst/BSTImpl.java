@@ -16,17 +16,17 @@ public class BSTImpl implements BST_IF {
 		return root == null;
 	}
 
-	private int recursiveheight(Node node){
+	private int recursiveHeight(Node node){
 		if(node == null){
 			return -1;
 		}else{
-			return 1 + Math.max(recursiveheight(node.getLeft()),recursiveheight(node.getRight()));
+			return 1 + Math.max(recursiveHeight(node.getLeft()),recursiveHeight(node.getRight()));
 		}
 	}
 	@Override
 	public int height() {
 		if (!isEmpty()){
-			return recursiveheight(root);
+			return recursiveHeight(root);
 		}
 		return 0;
 	}
