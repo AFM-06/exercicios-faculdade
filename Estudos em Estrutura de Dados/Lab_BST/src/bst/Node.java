@@ -4,7 +4,7 @@ public class Node {
 	private Integer value;
     private Node left;
     private Node right;
-    private Node parent;
+	private Node parent;
 
     public Node(){
 		value = null;
