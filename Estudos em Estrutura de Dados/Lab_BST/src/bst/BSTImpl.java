@@ -1,8 +1,6 @@
 package bst;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class BSTImpl implements BST_IF {
 	private Node root;
@@ -113,22 +111,22 @@ public class BSTImpl implements BST_IF {
 	private void transplant(Node u, Node v) {
 		// Se 'u' não tem pai, significa que ele é a raiz.
 		// Então 'v' se torna a nova raiz.
-		if (u.parent == null) {
+		if (u.getParent() == null) {
 			this.root = v;
 		}
 		// Se 'u' for o filho da esquerda do pai dele,
 		// 'v' assume essa posição à esquerda.
-		else if (u == u.parent.left) {
-			u.parent.left = v;
+		else if (u == u.getParent().getLeft()) {
+			u.getParent().setLeft(v);
 		}
 		// Caso contrário, 'u' era o filho da direita.
 		else {
-			u.parent.right = v;
+			u.getParent().setRight(v);
 		}
 
 		// Se 'v' não for vazio, conecta o pai de 'v' ao antigo pai de 'u'.
 		if (v != null) {
-			v.parent = u.parent;
+			v.setParent(u.getParent());
 		}
 	}
 	
@@ -143,41 +141,39 @@ public class BSTImpl implements BST_IF {
 		}
 
 		// Caso 1: Não tem filho à esquerda
-		if (z.left == null) {
-			transplant(z, z.right);
+		if (z.getLeft() == null) {
+			transplant(z, z.getRight());
 		}
 		// Caso 2: Não tem filho à direita
-		else if (z.right == null) {
-			transplant(z, z.left);
+		else if (z.getRight() == null) {
+			transplant(z, z.getLeft());
 		}
 		// Caso 3: Tem os dois filhos
 		else {
 			// Encontra o sucessor 'y' usando a função minimum que você já tem
-			Node y = minimum(z.right);
+			Node y = minimum(z.getRight());
 
 			// Se 'y' não for o filho imediato de 'z'
-			if (y.parent != z) {
-				transplant(y, y.right);
-				y.right = z.right;
-				y.right.parent = y;
+			if (y.getParent() != z) {
+				transplant(y, y.getRight());
+				y.setRight(z.getRight());
+				y.getRight().setParent(y);
 			}
 
 			// Finalmente, substitui 'z' por 'y'
 			transplant(z, y);
-			y.left = z.left;
-			y.left.parent = y;
+			y.setLeft(z.getLeft());
+			y.getLeft().setParent(y);
 		}
+		size--;
 	}
 
-	private Integer[] preOrderRecursive(Node root){
-		List<Integer> nodes = new ArrayList<>();
+	private void preOrderRecursive(Node root, List<Integer> nodes){
 		if(root != null){
-			nodes.add(root.value);
-			preOrderRecursive(root.left);
-			preOrderRecursive(root.right);
+			nodes.add(root.getValue());
+			preOrderRecursive(root.getLeft(), nodes);
+			preOrderRecursive(root.getRight(), nodes);
 		}
-		Integer[] array = nodes.toArray(new Integer[0]);
-		return array;
 	}
 	@Override
 	public Integer[] preOrder() {
@@ -196,9 +192,9 @@ public class BSTImpl implements BST_IF {
 
 	private void orderRecursive(Node root, List<Integer> nodes){
 		if(root != null){
-			preOrderRecursive(root.left, nodes);
-			nodes.add(root.value);
-			preOrderRecursive(root.right, nodes);
+			orderRecursive(root.getLeft(), nodes);
+			nodes.add(root.getValue());
+			orderRecursive(root.getRight(), nodes);
 		}
 	}
 
@@ -207,7 +203,29 @@ public class BSTImpl implements BST_IF {
 		if(!isEmpty()){
 			List<Integer> nodes = new ArrayList<>();
 
-			preOrderRecursive(root,nodes);
+			orderRecursive(root,nodes);
+
+			Integer[] array = nodes.toArray(new Integer[0]);
+
+			System.out.println(Arrays.toString(array));
+			return array;
+		}
+		return null;
+	}
+
+	private void postOrderRecursive(Node root, List<Integer> nodes){
+		if(root != null){
+			postOrderRecursive(root.getLeft(), nodes);
+			postOrderRecursive(root.getRight(), nodes);
+			nodes.add(root.getValue());
+		}
+	}
+	@Override
+	public Integer[] postOrder() {
+		if(!isEmpty()){
+			List<Integer> nodes = new ArrayList<>();
+
+			postOrderRecursive(root,nodes);
 
 			Integer[] array = nodes.toArray(new Integer[0]);
 
@@ -218,17 +236,8 @@ public class BSTImpl implements BST_IF {
 	}
 
 	@Override
-	public Integer[] postOrder() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public int size() {return size;}
 
-	@Override
-	public int size() {
-		// TODO Calcula a quantidade de nós da árvore.
-		return 0;
-	}
-	
 	/**
 	 * Método de brinde! Não modificar!
 	 * Este método implementa uma busca em largura usando uma fila e pode
@@ -238,18 +247,18 @@ public class BSTImpl implements BST_IF {
     public ArrayList<Integer> bfs() {
         ArrayList<Integer> list = new ArrayList<Integer>();
         Deque<Node> queue = new LinkedList<Node>();
-        
+
         if (!isEmpty()) {
             queue.addLast(this.root);
             while (!queue.isEmpty()) {
                 Node current = queue.removeFirst();
-                
+
                 list.add(current.getValue());
-                
-                if(current.getLeft() != null) 
+
+                if(current.getLeft() != null)
                     queue.addLast(current.getLeft());
-                if(current.getRight() != null) 
-                    queue.addLast(current.getRight());   
+                if(current.getRight() != null)
+                    queue.addLast(current.getRight());
             }
         }
         return list;
