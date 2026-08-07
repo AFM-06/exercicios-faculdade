@@ -43,7 +43,16 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
 
     @Override
     public void insertFirst(Integer novoElemento) {
-
+        Node newNode = new Node(novoElemento);
+        if(isEmpty()){
+            head = newNode;
+            tail = newNode;
+        }else{
+            newNode.setNext(head);
+            head.setPrev(newNode);
+            head = newNode;
+        }
+        size++;
     }
 
     @Override
