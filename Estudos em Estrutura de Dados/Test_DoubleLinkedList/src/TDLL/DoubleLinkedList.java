@@ -102,8 +102,19 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
     }
 
     @Override
-    public No removeFinal() {
-        return null;
+    public Node removeFinal() {
+        if(isEmpty()) return null;
+
+        Node removed = tail;
+        if(tail == head){
+            tail = null;
+            head = null;
+        }else{
+            tail.getPrev().setNext(null);
+            tail = tail.getPrev();
+        }
+        size--;
+        return removed;
     }
 
     @Override
