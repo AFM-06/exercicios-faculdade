@@ -15,7 +15,7 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
