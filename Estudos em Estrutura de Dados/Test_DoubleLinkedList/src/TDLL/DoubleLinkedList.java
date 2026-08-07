@@ -133,4 +133,13 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
             aux = aux.getNext();
         }
     }
+    public Node[] toArrayInverse() {
+        Node aux = tail;
+        Node[] array = new Node[size];
+        for(int i = 0;i<size;i++){
+            array[i] = aux;
+            aux = aux.getPrev();
+        }
+        return array;
+    }
 }
