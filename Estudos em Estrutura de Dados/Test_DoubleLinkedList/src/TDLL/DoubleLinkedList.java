@@ -127,4 +127,12 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
         }
         return array;
     }
+
+    public void print(){
+        Node aux = head;
+        while(aux!=null){
+            System.out.print(aux.getData()+" ");
+            aux = aux.getNext();
+        }
+    }
 }
