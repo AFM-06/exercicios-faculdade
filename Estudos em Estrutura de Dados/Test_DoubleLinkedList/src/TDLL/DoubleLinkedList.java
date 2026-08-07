@@ -86,8 +86,19 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
     }
 
     @Override
-    public No removeInicio() {
-        return null;
+    public Node removeInicio() {
+        if(isEmpty()) return null;
+
+        Node removed = head;
+        if(head == tail){
+            head = null;
+            tail = null;
+        }else{
+            head.getNext().setPrev(null);
+            head = head.getNext();
+        }
+        size--;
+        return removed;
     }
 
     @Override
