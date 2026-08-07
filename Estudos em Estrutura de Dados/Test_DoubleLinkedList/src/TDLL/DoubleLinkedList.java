@@ -142,4 +142,20 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
         }
         return array;
     }
+
+    public Node getMax(){
+        if(isEmpty()){
+            return null;
+        }
+        Node bigger_one = head;
+        Node aux = head.getNext();
+
+        while(aux!=null){
+            if(aux.getData()>bigger_one.getData()){
+                bigger_one = aux;
+            }
+            aux = aux.getNext();
+        }
+        return bigger_one;
+    }
 }
