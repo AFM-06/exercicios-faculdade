@@ -118,7 +118,13 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
     }
 
     @Override
-    public No[] toArray() {
-        return new No[0];
+    public Node[] toArray() {
+        Node aux = head;
+        Node[] array = new Node[size];
+        for(int i = 0;i<size;i++){
+            array[i] = aux;
+            aux = aux.getNext();
+        }
+        return array;
     }
 }
