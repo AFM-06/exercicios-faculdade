@@ -24,7 +24,20 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
     }
 
     @Override
-    public No search(Integer elemento) {
+    public Node search(Integer elemento) {
+        if(isEmpty()) return null;
+
+        Node start = head;
+        Node end = tail;
+        int limite = (size+1)/2;
+
+        for(int i = 0;i < limite; i++){
+            if(start.getData().equals(elemento)) return start;
+            if(end.getData().equals(elemento)) return end;
+
+            start = start.getNext();
+            end = end.getPrev();
+        }
         return null;
     }
 
