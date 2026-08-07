@@ -70,8 +70,19 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
     }
 
     @Override
-    public No remove(Integer elemento) {
-        return null;
+    public Node remove(Integer elemento) {
+        if (isEmpty()) return null;
+        Node target = search(elemento);
+        if (target == null) return null;
+
+        if (target == head) return removeInicio();
+        if (target == tail) return removeFinal();
+
+        target.getPrev().setNext(target.getNext());
+        target.getNext().setPrev(target.getPrev());
+
+        size--;
+        return target;
     }
 
     @Override
