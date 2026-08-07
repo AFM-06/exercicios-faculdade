@@ -3,6 +3,16 @@ package TDLL;
 import list.No;
 
 public class DoubleLinkedList implements IF_DoubleLinkedList{
+    private Node head;
+    private Node tail;
+    private int size;
+
+    public DoubleLinkedList(){
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
     @Override
     public boolean isEmpty() {
         return false;
