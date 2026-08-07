@@ -1,7 +1,5 @@
 package TDLL;
 
-import list.No;
-
 public class DoubleLinkedList implements IF_DoubleLinkedList{
     private Node head;
     private Node tail;
