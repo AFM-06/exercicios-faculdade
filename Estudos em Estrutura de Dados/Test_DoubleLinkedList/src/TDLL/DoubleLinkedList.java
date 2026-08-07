@@ -158,4 +158,20 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
         }
         return bigger_one;
     }
+
+    public Node getMinimum(){
+        if(isEmpty()){
+            return null;
+        }
+        Node minimum = head;
+        Node aux = head.getNext();
+
+        while(aux!=null){
+            if(aux.getData()<minimum.getData()){
+                minimum = aux;
+            }
+            aux = aux.getNext();
+        }
+        return minimum;
+    }
 }
