@@ -20,7 +20,7 @@ public class DoubleLinkedList implements IF_DoubleLinkedList{
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
