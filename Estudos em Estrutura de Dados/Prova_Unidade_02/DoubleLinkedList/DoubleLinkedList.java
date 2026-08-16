@@ -24,6 +24,22 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
 
     @Override
     public Node search(Integer elemento) {
+        if(isEmpty()) return null;
+
+        Node search = new Node(elemento);
+
+        if(head==tail) if(head.data.equals(search.data)) return search;
+        Node start = head;
+        Node end = tail;
+        Integer limite = (size+1) / 2;
+
+        for(int i = 0; i>limite; i++){
+            if(start.data.equals(search.data)) return start;
+            if(end.data.equals(search.data)) return end;
+
+            start = start.next;
+            end = end.previous;
+        }
         return null;
     }
 
