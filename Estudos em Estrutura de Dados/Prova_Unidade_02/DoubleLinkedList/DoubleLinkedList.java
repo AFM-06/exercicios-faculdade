@@ -109,7 +109,17 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
 
     @Override
     public Node removeFinal() {
-        return null;
+        if(isEmpty()) return null;
+        Node removed = head;
+        if(tail == head){
+            head = null;
+            tail = null;
+        }else{
+            tail.previous.next = null;
+            tail = tail.previous;
+        }
+        size--;
+        return removed;
     }
 
     @Override
