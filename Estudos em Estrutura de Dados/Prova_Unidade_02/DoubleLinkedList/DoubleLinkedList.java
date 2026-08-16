@@ -45,7 +45,16 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
 
     @Override
     public void insertFirst(Integer novoElemento) {
-
+        Node newNode = new Node(novoElemento);
+        if(isEmpty()){
+            head = newNode;
+            tail = newNode;
+        }else{
+            newNode.next = head;
+            head.previous = newNode;
+            head = newNode;
+        }
+        size++;
     }
 
     @Override
