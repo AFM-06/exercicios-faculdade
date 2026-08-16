@@ -94,7 +94,17 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
 
     @Override
     public Node removeInicio() {
-        return null;
+        if(isEmpty()) return null;
+        Node removed = head;
+        if(head == tail){
+            head = null;
+            tail = null;
+        }else{
+            head.next.previous = null;
+            head = head.next;
+        }
+        size--;
+        return removed;
     }
 
     @Override
