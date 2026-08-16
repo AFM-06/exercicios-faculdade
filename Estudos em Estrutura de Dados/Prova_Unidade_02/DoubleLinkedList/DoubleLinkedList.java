@@ -59,7 +59,16 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
 
     @Override
     public void insertLast(Integer novoElemento) {
-
+        Node newNode = new Node(novoElemento);
+        if(isEmpty()){
+            head = newNode;
+            tail = newNode;
+        }else{
+            newNode.previous = tail;
+            tail.next = newNode;
+            tail = newNode;
+        }
+        size++;
     }
 
     @Override
