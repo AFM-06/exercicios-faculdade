@@ -1,5 +1,10 @@
 package DoubleLinkedList;
 
+import list.No;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DoubleLinkedList implements DoubleLinkedList_Interface {
     private Node head;
     private Node tail;
@@ -125,13 +130,13 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
     @Override
     public Node[] toArray() {
         if(!isEmpty()){
-            List<No> array = new ArrayList<>();
-            No x = this.head;
+            List<Node> array = new ArrayList<>();
+            Node x = this.head;
             while(x != null){
                 array.add(x);
                 x = x.next;
             }
-            return array.toArray(new No[0]);
+            return array.toArray(new Node[0]);
         }
         return null;
     }
