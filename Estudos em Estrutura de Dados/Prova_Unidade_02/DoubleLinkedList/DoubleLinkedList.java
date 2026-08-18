@@ -124,7 +124,16 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
 
     @Override
     public Node[] toArray() {
-        return new Node[0];
+        if(!isEmpty()){
+            List<No> array = new ArrayList<>();
+            No x = this.head;
+            while(x != null){
+                array.add(x);
+                x = x.next;
+            }
+            return array.toArray(new No[0]);
+        }
+        return null;
     }
 
     @Override
