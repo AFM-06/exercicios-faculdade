@@ -78,10 +78,11 @@ public class DoubleLinkedList implements DoubleLinkedList_Interface {
 
     @Override
     public Node remove(Integer elemento) {
+        if (isEmpty()) return null;
         if(this.head.data.equals(elemento)){
-            removeInicio();
+            return removeInicio();
         }else if(this.tail.data.equals(elemento)){
-            removeFinal();
+            return removeFinal();
         }else{
             Node aux = this.head;
             while (aux != null && !aux.data.equals(elemento)){
