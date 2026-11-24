@@ -1,0 +1,1 @@
+Rename,Replace Magic Number,Remove Duplicated Code,Guard Clauses,Extract Class.

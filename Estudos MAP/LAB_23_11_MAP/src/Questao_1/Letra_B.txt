@@ -1,0 +1,5 @@
+Rename -> Muda nome de variáveis como 'p','q'.
+Replace Magic Number -> Cria algumas constantes para substituir números soltos no código.
+Remove Duplicated Code -> Cria um metódo 'formatarTotal()' para evitar repetição de código.
+Guard Clauses -> Corrige os 'ifs' para um código mais limpo.
+Extract Class -> Devia criar outras classes para lidar com Tela e Arquivo.
